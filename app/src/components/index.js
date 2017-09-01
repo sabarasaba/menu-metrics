@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import classNames from 'classnames/bind'
-import styles from './test.pss';
+import styles from './test.pss'
 
 const cx = classNames.bind(styles)
 
@@ -14,5 +14,5 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
 
