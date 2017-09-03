@@ -22,7 +22,11 @@ const SettingsForm = reduxForm({
 })(Settings)
 
 function mapStateToProps () {
-  return {}
+  return {
+    initialValues: {
+      interval: 5
+    }
+  }
 }
 
 function mapDispatchToProps() {
