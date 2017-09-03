@@ -3,12 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.2",
     "classnames": "^2.2.5",
     "eslint": "^4.5.0",
+    "lodash": "^4.17.4",
+    "postcss-nested": "^2.1.2",
     "react": "^15.6.1",
     "react-app-rewired": "^1.2.5",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.12"
+    "react-feather": "^1.0.7",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.12",
+    "redux": "^3.7.2",
+    "redux-form": "^7.0.3",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
+    "validator": "^8.1.0"
   },
   "scripts": {
     "start": "react-app-rewired start",

@@ -21,6 +21,7 @@ module.exports = function override(config, env) {
           ident: 'postcss',
           plugins: () => [
             require('postcss-flexbugs-fixes'),
+            require('postcss-nested'),
             autoprefixer({
               browsers: [
                 '>1%',
