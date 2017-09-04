@@ -33,11 +33,12 @@ p {
 }
 
 .app {
-  margin: 2rem 1rem;
+  margin: 6rem 1rem;
 }
 
 .row-3 {
   display: flex;
+  justify-content: space-between;
   width: 100%;
 }
 

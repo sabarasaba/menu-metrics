@@ -2,7 +2,8 @@ import { css } from 'emotion'
 
 export const root = css`
   text-align: center;
-  width: 100%;
+  width: 110px;
+  height: 110px;
   padding: 1rem;
   background-color: #fff;
   border-radius: 4px;

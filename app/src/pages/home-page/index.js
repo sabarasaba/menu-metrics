@@ -13,6 +13,7 @@ const config = {
     borderWidth: 0,
     type: 'area',
     margin: [0, 0, 0, 0],
+    height: 200,
     spacingTop: 0,
     spacingBottom: 0,
     spacingLeft: 0,
