@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames/bind'
 import HighCharts from 'react-highcharts'
 
+import LongBox from '../../components/long-box'
 import NumberText from '../../components/number-text'
 import styles from './HomePage.pss'
 
@@ -103,6 +104,63 @@ const config = {
 export default () => {
   return (
     <div>
+      <LongBox
+        title="75"
+        smallTitle="sales"
+        subtitle="6 awaiting payment"
+        icon="shopping_basket"
+      />
+
+      <LongBox
+        title="40"
+        smallTitle="orders"
+        subtitle="38 shipped"
+        icon="shopping_basket"
+        theme="primary"
+      />
+
+      <LongBox
+        title="6,000"
+        smallTitle="members"
+        subtitle="632 active"
+        icon="people"
+        theme="secondary"
+      />
+
+      <LongBox
+        title="72"
+        smallTitle="comments"
+        subtitle="17 approved"
+        icon="comment"
+        reverse
+      />
+
+      <LongBox
+        title="17"
+        smallTitle="sockets"
+        subtitle="2 listening"
+        icon="phone"
+        iconTheme="secondary"
+        reverse
+      />
+
+      <LongBox
+        title="72"
+        smallTitle="comments"
+        subtitle="17 approved"
+        icon="warning"
+        theme="warning"
+      />
+
+      <LongBox
+        title="72"
+        smallTitle="comments"
+        subtitle="17 approved"
+        icon="error"
+        theme="error"
+        reverse
+      />
+
       <div className={cx('root')}>
         <div className="row-3">
           <NumberText number="67" text="Active Users" />

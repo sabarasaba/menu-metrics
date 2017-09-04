@@ -10,8 +10,8 @@ html {
 }
 
 body {
-  color: #6b7c93;
-  background: #f6f9fc;
+  color: #373a3c;
+  background: #f0f0f0;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -19,7 +19,7 @@ body {
 
   font-size: 17px;
   line-height: 26px;
-  font-family: Segoe UI,sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,Roboto,sans-serif;
   font-weight: 400;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
