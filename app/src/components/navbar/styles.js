@@ -9,10 +9,5 @@ export const root = css`
   & a {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid currentColor;
   }
-`
-
-export const link = css`
-  color: red;
 `

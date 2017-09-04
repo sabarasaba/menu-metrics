@@ -1,17 +1,14 @@
 import React from 'react'
-import classNames from 'classnames/bind'
 
-import styles from './NumberText.pss'
-
-const cx = classNames.bind(styles)
+import * as styles from './styles.js'
 
 export default ({ number, text }) => {
   return (
-    <div className={cx('root')}>
-      <div className={cx('number')}>
+    <div className={styles.root}>
+      <div className={styles.number}>
         {number}
       </div>
-      <div className={cx('text')}>
+      <div className={styles.text}>
         {text}
       </div>
     </div>
