@@ -28,6 +28,10 @@ body {
   font-variant-numeric: proportional-nums;
 }
 
+#root {
+  overflow: hidden;
+}
+
 p {
   margin: 0;
 }
@@ -35,6 +39,9 @@ p {
 .app {
   height: calc(100vh - 56px);
   padding: 2rem 1rem;
+  margin-top: 56px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .row-3 {
