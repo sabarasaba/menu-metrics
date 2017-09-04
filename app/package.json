@@ -9,6 +9,7 @@
     "lodash": "^4.17.4",
     "postcss-nested": "^2.1.2",
     "react": "^15.6.1",
+    "react-app-rewire-emotion": "^1.0.2",
     "react-app-rewired": "^1.2.5",
     "react-dom": "^15.6.1",
     "react-feather": "^1.0.7",

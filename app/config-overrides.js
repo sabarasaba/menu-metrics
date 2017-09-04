@@ -1,6 +1,10 @@
+const rewireEmotion = require('react-app-rewire-emotion');
 const autoprefixer = require('autoprefixer');
 
+
 module.exports = function override(config, env) {
+  config = rewireEmotion(config, env, { inline: true })
+
   config.module.rules[1].oneOf.unshift({
     test: /\.pss$/,
     use: [
