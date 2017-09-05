@@ -7,10 +7,10 @@ import styles from './LongBox.pss'
 
 const cx = classNames.bind(styles)
 
-const getIconComponent = (icon, iconTheme, chartType) => {
+const getIconComponent = ({icon, iconTheme, chartType, reverse}) => {
   if (chartType === 'pie') {
     return (
-      <PieChart />
+      <PieChart reverse={reverse} />
     )
   }
 
@@ -34,7 +34,7 @@ const LongBox =  ({
   return (
     <div className={cx('root', theme)}>
       <div className={cx('content', { reverse })}>
-        {getIconComponent(icon, iconTheme, chartType)}
+        {getIconComponent({ icon, iconTheme, chartType, reverse})}
         <div className={cx('body')}>
           <h4>{title} <span>{smallTitle}</span></h4>
           <small>{subtitle}</small>

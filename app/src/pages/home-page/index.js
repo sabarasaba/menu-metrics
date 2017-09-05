@@ -112,6 +112,25 @@ export default () => {
         chartData={{
           fill: 60
         }}
+        reverse
+      />
+
+      <LongBox
+        title="72"
+        smallTitle="comments"
+        subtitle="17 approved"
+        icon="comment"
+        reverse
+      />
+
+      <LongBox
+        title="60%"
+        smallTitle="increase"
+        subtitle="21 Shipped"
+        chartType="pie"
+        chartData={{
+          fill: 60
+        }}
       />
 
       <LongBox

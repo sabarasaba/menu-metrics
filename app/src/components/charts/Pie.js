@@ -67,9 +67,9 @@ const config = {
   }]
 }
 
-export default ({ data }) => {
+export default ({ data, reverse }) => {
   return (
-    <div className={cx('pieRoot')}>
+    <div className={cx('pieRoot', { reverse })}>
       <HighCharts config={config} />
     </div>
   )
