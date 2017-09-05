@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames/bind'
 
+import SparklineChart from '../charts/Sparkline'
 import PieChart from '../charts/Pie'
 import styles from './LongBox.pss'
 
@@ -11,6 +12,11 @@ const getIconComponent = ({icon, iconTheme, chartType, reverse}) => {
   if (chartType === 'pie') {
     return (
       <PieChart reverse={reverse} />
+    )
+  }
+  if (chartType === 'sparkline') {
+    return (
+      <SparklineChart reverse />
     )
   }
 
@@ -31,9 +37,11 @@ const LongBox =  ({
   reverse,
   chartType
 }) => {
+  const direction = chartType === 'sparkline' ? true : reverse
+
   return (
     <div className={cx('root', theme)}>
-      <div className={cx('content', { reverse })}>
+      <div className={cx('content', { reverse: direction })}>
         {getIconComponent({ icon, iconTheme, chartType, reverse})}
         <div className={cx('body')}>
           <h4>{title} <span>{smallTitle}</span></h4>

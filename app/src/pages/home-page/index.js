@@ -105,22 +105,10 @@ export default () => {
   return (
     <div>
       <LongBox
-        title="60%"
-        smallTitle="increase"
-        subtitle="21 Shipped"
-        chartType="pie"
-        chartData={{
-          fill: 60
-        }}
-        reverse
-      />
-
-      <LongBox
-        title="72"
-        smallTitle="comments"
-        subtitle="17 approved"
-        icon="comment"
-        reverse
+        title="25%"
+        smallTitle="decrease"
+        subtitle="623 activities"
+        chartType="sparkline"
       />
 
       <LongBox
@@ -128,9 +116,6 @@ export default () => {
         smallTitle="increase"
         subtitle="21 Shipped"
         chartType="pie"
-        chartData={{
-          fill: 60
-        }}
       />
 
       <LongBox
