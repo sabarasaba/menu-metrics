@@ -105,6 +105,16 @@ export default () => {
   return (
     <div>
       <LongBox
+        title="60%"
+        smallTitle="increase"
+        subtitle="21 Shipped"
+        chartType="pie"
+        chartData={{
+          fill: 60
+        }}
+      />
+
+      <LongBox
         title="75"
         smallTitle="sales"
         subtitle="6 awaiting payment"
@@ -175,5 +185,4 @@ export default () => {
     </div>
   )
 }
-
 
