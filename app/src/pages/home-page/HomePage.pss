@@ -1,15 +1,4 @@
 .root {
-  display: flex;
-}
-
-.sparkline {
-  margin-top: 2rem;
-  background-color: #5969e2;
-}
-
-:global .highcharts-credits,
-:global .highcharts-legend {
-  display: none;
 }
 
 :global .highcharts-tooltip > span {
