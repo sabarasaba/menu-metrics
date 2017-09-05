@@ -40,13 +40,14 @@ const config = {
     pie: {
       showInLegend: false,
       allowPointSelect: false,
-      //allowPointSelect: true,
       size: 40,
-      //cursor: 'pointer',
       dataLabels: {
         enabled: false
       },
-      //showInLegend: true
+      colors: [
+        '#0CC2AA',
+        '#F1F2F3'
+      ]
     }
   },
   series: [{
@@ -59,11 +60,9 @@ const config = {
       }
     },
     data: [{
-      y: 56.33
+      y: 60.00
     }, {
-      y: 24.03,
-    }, {
-      y: 10.38
+      y: 40.00
     }]
   }]
 }

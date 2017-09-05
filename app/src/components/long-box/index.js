@@ -31,10 +31,6 @@ const LongBox =  ({
   reverse,
   chartType
 }) => {
-  if (chartType === 'pie') {
-
-  }
-
   return (
     <div className={cx('root', theme)}>
       <div className={cx('content', { reverse })}>
