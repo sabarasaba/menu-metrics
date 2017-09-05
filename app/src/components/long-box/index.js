@@ -8,15 +8,15 @@ import styles from './LongBox.pss'
 
 const cx = classNames.bind(styles)
 
-const getIconComponent = ({icon, iconTheme, chartType, reverse}) => {
+const getIconComponent = ({icon, iconTheme, chartType, chartConfig, reverse}) => {
   if (chartType === 'pie') {
     return (
-      <PieChart reverse={reverse} />
+      <PieChart data={chartConfig} reverse={reverse} />
     )
   }
   if (chartType === 'sparkline') {
     return (
-      <SparklineChart reverse />
+      <SparklineChart data={chartConfig} reverse />
     )
   }
 
@@ -35,14 +35,15 @@ const LongBox =  ({
   iconTheme,
   theme,
   reverse,
-  chartType
+  chartType,
+  chartConfig
 }) => {
   const direction = chartType === 'sparkline' ? true : reverse
 
   return (
     <div className={cx('root', theme)}>
       <div className={cx('content', { reverse: direction })}>
-        {getIconComponent({ icon, iconTheme, chartType, reverse})}
+        {getIconComponent({ icon, iconTheme, chartType, chartConfig,  reverse})}
         <div className={cx('body')}>
           <h4>{title} <span>{smallTitle}</span></h4>
           <small>{subtitle}</small>
@@ -64,7 +65,8 @@ LongBox.propTypes = {
   iconTheme: PropTypes.string,
   theme: PropTypes.string,
   reverse: PropTypes.bool,
-  chartType: PropTypes.string
+  chartType: PropTypes.string,
+  chartConfig: PropTypes.object
 }
 
 export default LongBox
