@@ -43,7 +43,7 @@ const LongBox =  ({
   return (
     <div className={cx('root', theme)}>
       <div className={cx('content', { reverse: direction })}>
-        {getIconComponent({ icon, iconTheme, chartType, chartConfig,  reverse})}
+        {getIconComponent({ icon, iconTheme, chartType, chartConfig, reverse})}
         <div className={cx('body')}>
           <h4>{title} <span>{smallTitle}</span></h4>
           <small>{subtitle}</small>
