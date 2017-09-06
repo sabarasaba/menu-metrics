@@ -1,7 +1,8 @@
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-// import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux'
 
+import { setSettings } from '../reducks/settings'
 import Settings from '../components/settings'
 
 export const validate = (values, props) => {
@@ -10,9 +11,8 @@ export const validate = (values, props) => {
   return errors
 }
 
-export const onSubmit = (values) => {
-  console.log('done')
-  console.log(values)
+export const onSubmit = (values, dispatch, props) => {
+  props.setSettings(values)
 }
 
 const SettingsForm = reduxForm({
@@ -21,21 +21,19 @@ const SettingsForm = reduxForm({
   onSubmit
 })(Settings)
 
-function mapStateToProps () {
+function mapStateToProps(state) {
   return {
-    initialValues: {
-      interval: 5
-    }
+    initialValues: state.settings.data
   }
 }
 
-function mapDispatchToProps() {
-  return {}
+function mapDispatchToProps(dispatch) {
+  return {
+    setSettings: bindActionCreators(setSettings, dispatch)
+  }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(SettingsForm)
-
-

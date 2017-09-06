@@ -11,6 +11,17 @@ export default props => {
   return (
     <form className={cx('root')} onSubmit={handleSubmit}>
       <div className={cx('inputLine')}>
+        <label>URL</label>
+        <div>
+          <Field
+            name="url"
+            component="input"
+            type="text"
+            placeholder="https://example.com"
+          />
+        </div>
+      </div>
+      <div className={cx('inputLine')}>
         <label>Auto-Refresh Interval (minutes)</label>
         <div>
           <Field
