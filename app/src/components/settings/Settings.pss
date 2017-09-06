@@ -1,26 +1,27 @@
-.inputLine input {
-  box-shadow: 0 0 0 0.5px rgba(49,49,93,.03), 0 2px 5px 0 rgba(49,49,93,.1), 0 1px 2px 0 rgba(0,0,0,.08);
-  background-color: #fff;
-  background-repeat: no-repeat;
-  background-size: 13px 13px;
-  background-position: 10px 8px;
-  border-radius: 4px;
-  font-weight: 400;
-  font-size: 16px;
-  color: #525f7f;
-  height: 40px;
-  border: none;
-  margin-top: .2rem;
-  padding: 0 7px 0 7px;
-  width: 100%;
-  z-index: 1;
-  position: relative;
-  transition: box-shadow .2s ease-in-out;
-}
-
 .inputLine {
   label {
     font-size: 15px;
+  }
+
+  input {
+    box-shadow: 0 0 0 0.5px rgba(49,49,93,.03), 0 2px 5px 0 rgba(49,49,93,.1), 0 1px 2px 0 rgba(0,0,0,.08);
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 13px 13px;
+    background-position: 10px 8px;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #525f7f;
+    height: 40px;
+    border: none;
+    margin-top: .2rem;
+    padding: 0 7px 0 7px;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    transition: box-shadow .2s ease-in-out;
+    outline: none;
   }
 }
 
@@ -53,15 +54,15 @@
   transition: box-shadow .08s ease-in,color .08s ease-in;
   user-select: none;
   border: none;
-}
 
-.root button:hover {
-  box-shadow: 0 0 0 0.5px #555abf, 0 2px 5px 0 rgba(50,50,93,.3), 0 3.6px 9px 0 rgba(50,50,93,.1), 0 1px 1.5px 0 rgba(0,0,0,.08), 0 1px 2px 0 rgba(0,0,0,.08);
-}
+  &:hover {
+    box-shadow: 0 0 0 0.5px #555abf, 0 2px 5px 0 rgba(50,50,93,.3), 0 3.6px 9px 0 rgba(50,50,93,.1), 0 1px 1.5px 0 rgba(0,0,0,.08), 0 1px 2px 0 rgba(0,0,0,.08);
+  }
 
-.root button:disabled {
-  box-shadow: 0 0 0 0.5px #7e82d9, 0 1.5px 1px 0 rgba(66,71,112,.1), 0 2px 5px 0 rgba(50,50,93,.1), 0 1px 2px 0 rgba(0,0,0,.08), 0 0 0 0 transparent;
-  background: #7e82d9;
-  color: hsla(0,0%,100%,.75);
-  cursor: initial;
+  &:disabled {
+    box-shadow: 0 0 0 0.5px #7e82d9, 0 1.5px 1px 0 rgba(66,71,112,.1), 0 2px 5px 0 rgba(50,50,93,.1), 0 1px 2px 0 rgba(0,0,0,.08), 0 0 0 0 transparent;
+    background: #7e82d9;
+    color: hsla(0,0%,100%,.75);
+    cursor: initial;
+  }
 }

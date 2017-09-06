@@ -1,11 +1,16 @@
 {
-  "name": "app",
+  "name": "json-menu",
   "version": "0.1.0",
   "private": true,
+  "main": "./electron/boot.js",
+  "homepage": "./",
   "dependencies": {
     "axios": "^0.16.2",
     "classnames": "^2.2.5",
+    "electron": "^1.7.5",
+    "electron-json-storage": "^3.1.0",
     "eslint": "^4.5.0",
+    "foreman": "^2.0.0",
     "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -22,10 +27,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "react-scripts start",
+    "dev": "nf start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "electron": "electron .",
+    "electron-build": "electron-packager . Example --platform=darwin --arch=x64 --version=0.36.0 --icon=Icon.icns",
     "lint": "eslint src"
   }
 }
