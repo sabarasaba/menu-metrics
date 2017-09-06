@@ -12,6 +12,7 @@
     "eslint": "^4.5.0",
     "foreman": "^2.0.0",
     "lodash": "^4.17.4",
+    "menubar": "^5.2.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-feather": "^1.0.7",
@@ -23,6 +24,7 @@
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "sabarasaba-react-scripts": "^10.0.13",
+    "shortid": "^2.2.8",
     "validator": "^8.1.0"
   },
   "scripts": {
