@@ -9,7 +9,16 @@ import styles from './HomePage.pss'
 
 const cx = classNames.bind(styles)
 
-const HomePage = ({ report }) => {
+const HomePage = ({ report, error }) => {
+  if (error) {
+    return (
+      <div className={cx('errorRoot')}>
+        <h3>{error}</h3>
+        <iframe title="sd" src="https://giphy.com/embed/bMnnmNo087fgs" width="356" height="480" frameBorder="0" allowFullScreen></iframe>
+      </div>
+    )
+  }
+
   return (
     <div className={cx('root')}>
       {report.map(e => (
@@ -24,7 +33,8 @@ const HomePage = ({ report }) => {
 
 function mapStateToProps(state) {
   return {
-    report: getParsedReport(state)
+    report: getParsedReport(state),
+    error: state.report.error
   }
 }
 

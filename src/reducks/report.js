@@ -1,12 +1,15 @@
 import axios from 'axios'
+import _ from 'lodash'
 import config from './tests/config1'
 
 export const SET_REPORT = 'report/SET_REPORT'
+export const SET_ERROR = 'report/SET_ERROR'
 export const TOGGLE_LOADING = 'report/TOGGLE_LOADING'
 
 const initialState = {
   config,
-  isLoading: false
+  isLoading: false,
+  error: null
 }
 
 export default function(state = initialState, action) {
@@ -23,6 +26,12 @@ export default function(state = initialState, action) {
         isLoading: action.toggle
       }
 
+    case SET_ERROR:
+      return {
+        ...state,
+        error: action.error
+      }
+
     default:
       return state
   }
@@ -36,8 +45,14 @@ export function fetchReport() {
 
     try {
       const config = await axios.get(state.settings.data.url)
-      dispatch({ type: SET_REPORT, config })
+
+      if (_.isObject(config)) {
+        dispatch({ type: SET_REPORT, config })
+      }
+
+      dispatch({ type: SET_ERROR, error: 'Endpoint response must be json' })
     } catch (e) {
+      dispatch({ type: SET_ERROR, error: 'Cant reach your endpoint' })
       console.log(e)
     }
 
