@@ -7,14 +7,14 @@ import styles from './Navbar.pss'
 
 const cx = classNames.bind(styles)
 
-export default () => {
+export default ({ isLoading, onRefreshClick }) => {
   return (
     <nav className={cx('root')}>
       <NavLink to="/about">
         <Settings color="#24b47e" />
       </NavLink>
-      <Link to="/">
-        <RefreshCcw color="#24b47e" />
+      <Link to="/" onClick={onRefreshClick}>
+        <RefreshCcw color="#24b47e" className={cx({ loading: isLoading })} />
       </Link>
     </nav>
   )
