@@ -1,4 +1,4 @@
-import store from '../helpers/store'
+import storage from '../helpers/storage'
 
 export const SET_SETTINGS = 'settings/SET_SETTINGS'
 
@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
 
 export function setSettings(values) {
   return dispatch => {
-    store.set('settings', JSON.stringify(values))
+    storage.set('settings', JSON.stringify(values))
 
     dispatch({
       type: SET_SETTINGS,

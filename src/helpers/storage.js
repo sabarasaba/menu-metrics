@@ -9,7 +9,7 @@ export default {
           reject(err)
         }
 
-        resolve(data)
+        resolve(JSON.parse(data))
       })
     })
   },
