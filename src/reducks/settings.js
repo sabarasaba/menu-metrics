@@ -7,8 +7,7 @@ const initialState = {
     apiKey: '',
     url: 'https://example.com/stats',
     interval: 5
-  },
-  isLoading: false
+  }
 }
 
 export default function (state = initialState, action) {
