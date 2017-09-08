@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames/bind'
 import { Field } from 'redux-form'
+import renderField from '../fields/input'
 
 import styles from './Settings.pss'
 
@@ -10,28 +11,21 @@ export default props => {
   const { handleSubmit, pristine, submitting } = props
   return (
     <form className={cx('root')} onSubmit={handleSubmit}>
-      <div className={cx('inputLine')}>
-        <label>URL</label>
-        <div>
-          <Field
-            name="url"
-            component="input"
-            type="text"
-            placeholder="https://example.com"
-          />
-        </div>
-      </div>
-      <div className={cx('inputLine')}>
-        <label>Auto-Refresh Interval (minutes)</label>
-        <div>
-          <Field
-            name="interval"
-            component="input"
-            type="text"
-            placeholder="5"
-          />
-        </div>
-      </div>
+      <Field
+        name="url"
+        type="text"
+        label="URL"
+        placeholder="https://example.com"
+        component={renderField}
+      />
+      <Field
+        name="interval"
+        type="text"
+        label="Auto-Refresh Interval (minutes)"
+        placeholder="5"
+        component={renderField}
+      />
+
       <div className={cx('footer')}>
         <button type="submit" disabled={pristine || submitting}>
           Submit

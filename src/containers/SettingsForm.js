@@ -1,3 +1,4 @@
+import validator from 'validator'
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -7,6 +8,14 @@ import Settings from '../components/settings'
 
 export const validate = (values, props) => {
   const errors = {}
+
+  if (!validator.isURL(values.url)) {
+    errors.url = 'Not a valid url'
+  }
+
+  if (!validator.isInt(values.interval, { min: 1 })) {
+    errors.interval = 'Must be an integer bigger than 0'
+  }
 
   return errors
 }

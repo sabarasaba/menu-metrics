@@ -1,0 +1,35 @@
+.inputLine {
+  label {
+    font-size: 15px;
+  }
+
+  input {
+    box-shadow: 0 0 0 0.5px rgba(49,49,93,.03), 0 2px 5px 0 rgba(49,49,93,.1), 0 1px 2px 0 rgba(0,0,0,.08);
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 13px 13px;
+    background-position: 10px 8px;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #525f7f;
+    height: 40px;
+    border: none;
+    margin-top: .2rem;
+    padding: 0 7px 0 7px;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    transition: box-shadow .2s ease-in-out;
+    outline: none;
+  }
+
+  span {
+    font-size: 13px;
+    color: #f44336;
+  }
+}
+
+.inputLine + .inputLine {
+  margin-top: .7rem;
+}
