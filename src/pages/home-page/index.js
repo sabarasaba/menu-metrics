@@ -14,7 +14,7 @@ const HomePage = ({ report, error }) => {
     return (
       <div className={cx('errorRoot')}>
         <h3>{error}</h3>
-        <iframe title="sd" src="https://giphy.com/embed/bMnnmNo087fgs" width="356" height="480" frameBorder="0" allowFullScreen></iframe>
+        <img src="https://media1.giphy.com/media/qyd6eggg0EIzm/giphy.gif" alt="img" />
       </div>
     )
   }
