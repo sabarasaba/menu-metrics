@@ -16,11 +16,13 @@ class NavBarContainer extends Component {
 
   render() {
     const {
-      isLoading
+      isLoading,
+      hasSettings
     } = this.props
 
     return (
       <NavBar
+        hasSettings={hasSettings}
         isLoading={isLoading}
         onRefreshClick={this.onRefreshClick}
       />
@@ -30,7 +32,8 @@ class NavBarContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    isLoading: state.report.isLoading
+    isLoading: state.report.isLoading,
+    hasSettings: state.settings.data.interval
   }
 }
 

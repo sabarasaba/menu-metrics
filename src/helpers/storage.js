@@ -1,3 +1,4 @@
+import _ from 'lodash'
 const electron = window.require('electron')
 const storage = electron.remote.require('electron-json-storage')
 
@@ -9,7 +10,7 @@ export default {
           reject(err)
         }
 
-        resolve(JSON.parse(data))
+        resolve(_.isEmpty(data) ? {} : JSON.parse(data))
       })
     })
   },

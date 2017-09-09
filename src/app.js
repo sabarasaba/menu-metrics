@@ -12,7 +12,11 @@ import NotFoundPage from './pages/not-found'
 
 class App extends Component {
   componentDidMount() {
-    this.onTick()
+    if (this.props.interval) {
+      this.onTick()
+    } else {
+      this.props.history.push('/settings')
+    }
   }
 
   onTick = () => {
@@ -29,7 +33,7 @@ class App extends Component {
         <div className="app">
           <Switch>
             <Route path="/" exact component={HomePage} />
-            <Route path="/about" exact component={SettingsPage} />
+            <Route path="/settings" exact component={SettingsPage} />
 
             { /* Catch all unmatched routes */ }
             <Route component={NotFoundPage} />
