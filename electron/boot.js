@@ -10,7 +10,8 @@ const appPath = isDev
 console.log(appPath)
 
 const mb = menubar(Object.assign({
-  height: 600
+  height: 600,
+  resizable: false
 }, appPath))
 
 mb.on('ready', function ready () {

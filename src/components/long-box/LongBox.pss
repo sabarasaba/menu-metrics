@@ -108,6 +108,7 @@
     line-height: 19px;
 
     h4 {
+      color: inherit;
       margin: 0;
       font-size: 18px;
       font-weight: 500;
@@ -119,6 +120,7 @@
     }
 
     small {
+      color: inherit;
       opacity: .6;
       font-weight: 400;
       font-size: 13px;
