@@ -1,9 +1,13 @@
 const menubar = require('menubar')
 const path = require('path')
 
-const appPath = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development'
+
+const appPath = isDev
   ? { index: 'http://localhost:5000' }
-  : { dir: path.join(__dirname, 'app/build/') }
+  : { dir: path.join(__dirname, '../build/') }
+
+console.log(appPath)
 
 const mb = menubar(Object.assign({
   height: 600
@@ -13,6 +17,6 @@ mb.on('ready', function ready () {
   console.log('app is ready')
 })
 
-if (process.env.NODE_ENV === 'development') {
+if (isDev) {
   mb.on('after-create-window', () => mb.window.openDevTools())
 }
