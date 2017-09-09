@@ -14,7 +14,7 @@ const HomePage = ({ report, error }) => {
     return (
       <div className={cx('errorRoot')}>
         <h3>{error}</h3>
-        <img src="https://media1.giphy.com/media/qyd6eggg0EIzm/giphy.gif" alt="img" />
+        <img src="/assets/kitty.webp" alt="img" />
       </div>
     )
   }
