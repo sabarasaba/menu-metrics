@@ -13,5 +13,6 @@ mb.on('ready', function ready () {
   console.log('app is ready')
 })
 
-mb.on('after-create-window', () => mb.window.openDevTools())
-
+if (process.env.NODE_ENV === 'development') {
+  mb.on('after-create-window', () => mb.window.openDevTools())
+}
