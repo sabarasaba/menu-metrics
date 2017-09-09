@@ -6,7 +6,14 @@ import { bindActionCreators } from 'redux'
 import { fetchReport } from '../reducks/report'
 import NavBar from '../components/navbar'
 
+const electron = window.require('electron')
+
 class NavBarContainer extends Component {
+  onCloseApp = () => {
+    const window = electron.remote.getCurrentWindow()
+    window.close()
+  }
+
   onRefreshClick = (e) => {
     if (this.props.location.pathname === '/' && !this.props.isLoading) {
       e.preventDefault()
@@ -25,6 +32,7 @@ class NavBarContainer extends Component {
         hasSettings={hasSettings}
         isLoading={isLoading}
         onRefreshClick={this.onRefreshClick}
+        onCloseApp={this.onCloseApp}
       />
     )
   }
