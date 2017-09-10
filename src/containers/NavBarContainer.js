@@ -10,8 +10,7 @@ const electron = window.require('electron')
 
 class NavBarContainer extends Component {
   onCloseApp = () => {
-    const window = electron.remote.getCurrentWindow()
-    window.close()
+    electron.remote.app.exit()
   }
 
   onRefreshClick = (e) => {

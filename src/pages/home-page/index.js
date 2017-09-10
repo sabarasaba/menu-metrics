@@ -11,10 +11,14 @@ const cx = classNames.bind(styles)
 
 const HomePage = ({ report, error }) => {
   if (error) {
+    const imagePath = process.env.NODE_ENV === 'development'
+      ? '/assets/kitty.webp'
+      : 'assets/kitty.webp'
+
     return (
       <div className={cx('errorRoot')}>
         <h3>{error}</h3>
-        <img src="/assets/kitty.webp" alt="img" />
+        <img src={imagePath} alt="img" />
       </div>
     )
   }
