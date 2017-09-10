@@ -44,13 +44,13 @@ export function fetchReport() {
     dispatch({ type: TOGGLE_LOADING, toggle: true })
 
     try {
-      const config = await axios.get(state.settings.data.url)
+      const { data } = await axios.get(state.settings.data.url)
 
       if (_.isObject(config)) {
-        dispatch({ type: SET_REPORT, config })
+        dispatch({ type: SET_REPORT, config: data })
+      } else {
+        dispatch({ type: SET_ERROR, error: 'Endpoint response must be json' })
       }
-
-      dispatch({ type: SET_ERROR, error: 'Endpoint response must be json' })
     } catch (e) {
       dispatch({ type: SET_ERROR, error: 'Cant reach your endpoint' })
       console.log(e)

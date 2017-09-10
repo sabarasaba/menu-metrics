@@ -6,7 +6,7 @@ export const getReport = state => state.report.config
 
 export const getParsedReport = createSelector(
   getReport,
-  (report) => {
+  (report = []) => {
     return report.map(e => {
       return {
         type: e.type,

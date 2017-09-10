@@ -5,29 +5,31 @@
   "main": "./electron/boot.js",
   "homepage": "./",
   "dependencies": {
-    "antd": "^2.13.0",
     "axios": "^0.16.2",
     "classnames": "^2.2.5",
     "electron": "^1.7.5",
     "electron-json-storage": "^3.1.0",
     "electron-packager": "^9.0.1",
-    "eslint": "^4.5.0",
     "foreman": "^2.0.0",
     "lodash": "^4.17.4",
     "menubar": "^5.2.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-feather": "^1.0.7",
-    "react-highcharts": "^12.0.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-form": "^7.0.3",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
-    "sabarasaba-react-scripts": "^10.0.13",
     "shortid": "^2.2.8",
     "validator": "^8.1.0"
+  },
+  "devDependencies": {
+    "react-highcharts": "^12.0.0",
+    "eslint": "^4.5.0",
+    "antd": "^2.13.0",
+    "sabarasaba-react-scripts": "^10.0.13"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,7 +38,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "electron": "electron .",
-    "electron-build": "NODE_ENV=production electron-packager . json-metrics --out=build/osx --platform=darwin --arch=x64 --version=0.36.0 --icon=public/Icon.icns",
+    "electron-build": "NODE_ENV=production electron-packager . json-metrics --out=build/osx --platform=darwin --arch=x64 --version=0.36.0 --icon=public/Icon.icns --overwrite",
     "lint": "eslint src"
   },
   "devDependencies": {}
