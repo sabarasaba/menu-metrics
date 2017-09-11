@@ -26,6 +26,7 @@
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "sabarasaba-react-scripts": "^10.0.13",
+    "semver-compare": "^1.0.0",
     "shortid": "^2.2.8",
     "validator": "^8.1.0"
   },

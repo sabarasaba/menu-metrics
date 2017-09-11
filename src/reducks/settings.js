@@ -1,8 +1,12 @@
+import axios from 'axios'
+import compare from 'semver-compare'
 import storage from '../helpers/storage'
 import { version } from '../../package.json'
 
 export const SET_SETTINGS = 'settings/SET_SETTINGS'
 export const SET_CHECKING_UPDATES = 'settings/SET_CHECKING_UPDATES'
+
+const electron = window.require('electron')
 
 const initialState = {
   data: {
@@ -47,10 +51,21 @@ export function setSettings(values) {
 }
 
 export function checkUpdate() {
-  return dispatch => {
+  return async dispatch => {
     dispatch({ type: SET_CHECKING_UPDATES, toggle: 'Checking for update..' })
-    console.log(`Current version: ${version}`)
-    dispatch({ type: SET_CHECKING_UPDATES, toggle: 'No new updates' })
+
+    try {
+      const { data } = await axios.get(process.env.REACT_APP_UPDATE_URI)
+
+      if (compare(data, version) === 1) {
+        dispatch({ type: SET_CHECKING_UPDATES, toggle: 'Theres new update' })
+        electron.remote.shell.openExternal('https://github.com')
+      } else {
+        dispatch({ type: SET_CHECKING_UPDATES, toggle: 'No new updates' })
+      }
+    } catch (e) {
+      dispatch({ type: SET_CHECKING_UPDATES, toggle: 'No new updates' })
+    }
 
     setTimeout(() => {
       dispatch({ type: SET_CHECKING_UPDATES, toggle: 'Check updates' })
