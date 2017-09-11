@@ -1,13 +1,16 @@
 import storage from '../helpers/storage'
+import { version } from '../../package.json'
 
 export const SET_SETTINGS = 'settings/SET_SETTINGS'
+export const SET_CHECKING_UPDATES = 'settings/SET_CHECKING_UPDATES'
 
 const initialState = {
   data: {
     apiKey: '',
     url: 'https://example.com/stats',
     interval: 5
-  }
+  },
+  checkingForUpdates: 'Check updates'
 }
 
 export default function (state = initialState, action) {
@@ -19,6 +22,12 @@ export default function (state = initialState, action) {
           ...state.data,
           ...action.values
         }
+      }
+
+    case SET_CHECKING_UPDATES:
+      return {
+        ...state,
+        checkingForUpdates: action.toggle
       }
 
     default:
@@ -34,5 +43,17 @@ export function setSettings(values) {
       type: SET_SETTINGS,
       values
     })
+  }
+}
+
+export function checkUpdate() {
+  return dispatch => {
+    dispatch({ type: SET_CHECKING_UPDATES, toggle: 'Checking for update..' })
+    console.log(`Current version: ${version}`)
+    dispatch({ type: SET_CHECKING_UPDATES, toggle: 'No new updates' })
+
+    setTimeout(() => {
+      dispatch({ type: SET_CHECKING_UPDATES, toggle: 'Check updates' })
+    }, 120000)
   }
 }

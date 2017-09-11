@@ -8,7 +8,14 @@ import styles from './Navbar.pss'
 
 const cx = classNames.bind(styles)
 
-export default ({ hasSettings, isLoading, onRefreshClick, onCloseApp }) => {
+export default ({
+  updatesLabel,
+  hasSettings,
+  isLoading,
+  onRefreshClick,
+  onCheckUpdate,
+  onCloseApp
+}) => {
   const menu = (
     <Menu>
       <Menu.Item key="0">
@@ -16,10 +23,10 @@ export default ({ hasSettings, isLoading, onRefreshClick, onCloseApp }) => {
           Settings
         </NavLink>
       </Menu.Item>
-      <Menu.Item disabled key="1">
-        <NavLink to="/settings">
-          Check update
-        </NavLink>
+      <Menu.Item key="1">
+        <div onClick={onCheckUpdate}>
+          {updatesLabel || 'Check updates'}
+        </div>
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item key="3" onClick={onCloseApp}>

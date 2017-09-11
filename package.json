@@ -36,7 +36,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "electron": "electron .",
-    "electron-build": "NODE_ENV=production electron-packager . json-metrics --out=build/osx --platform=darwin --arch=x64 --version=0.36.0 --icon=public/Icon.icns --overwrite --ignore=\.node_modules/sabarasaba-react-scripts --ignore=\.node_modules/antd --ignore=/.node_modules/react-highcharts",
+    "electron-build": "NODE_ENV=production electron-packager . json-metrics --out=build/osx --platform=darwin --arch=x64 --version=0.36.0 --icon=public/Icon.icns --overwrite --ignore=\\.node_modules/sabarasaba-react-scripts --ignore=\\.node_modules/antd --ignore=\\.node_modules/react-highcharts",
     "lint": "eslint src"
   }
 }

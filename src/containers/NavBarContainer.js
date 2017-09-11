@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux'
 
+import { checkUpdate } from '../reducks/settings'
 import { fetchReport } from '../reducks/report'
 import NavBar from '../components/navbar'
 
@@ -11,6 +12,12 @@ const electron = window.require('electron')
 class NavBarContainer extends Component {
   onCloseApp = () => {
     electron.remote.app.exit()
+  }
+
+  onCheckUpdate = (e) => {
+    e.stopPropagation()
+
+    this.props.checkUpdate()
   }
 
   onRefreshClick = (e) => {
@@ -22,15 +29,18 @@ class NavBarContainer extends Component {
 
   render() {
     const {
+      updatesLabel,
       isLoading,
       hasSettings
     } = this.props
 
     return (
       <NavBar
+        updatesLabel={updatesLabel}
         hasSettings={hasSettings}
         isLoading={isLoading}
         onRefreshClick={this.onRefreshClick}
+        onCheckUpdate={this.onCheckUpdate}
         onCloseApp={this.onCloseApp}
       />
     )
@@ -40,13 +50,15 @@ class NavBarContainer extends Component {
 function mapStateToProps(state) {
   return {
     isLoading: state.report.isLoading,
-    hasSettings: state.settings.data.interval
+    hasSettings: state.settings.data.interval,
+    updatesLabel: state.settings.checkingForUpdates
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchReport: bindActionCreators(fetchReport, dispatch)
+    fetchReport: bindActionCreators(fetchReport, dispatch),
+    checkUpdate: bindActionCreators(checkUpdate, dispatch)
   }
 }
 
