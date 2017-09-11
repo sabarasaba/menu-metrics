@@ -58,8 +58,8 @@ export function checkUpdate() {
       const { data } = await axios.get(process.env.REACT_APP_UPDATE_URI)
 
       if (compare(data.version, version) === -1) {
-        dispatch({ type: SET_CHECKING_UPDATES, toggle: 'Theres new update' })
-        electron.remote.shell.openExternal('https://github.com')
+        dispatch({ type: SET_CHECKING_UPDATES, toggle: 'Check updates' })
+        electron.remote.shell.openExternal('https://json-menu.com/download')
       } else {
         dispatch({ type: SET_CHECKING_UPDATES, toggle: 'No new updates' })
       }
