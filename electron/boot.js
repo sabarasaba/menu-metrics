@@ -1,6 +1,7 @@
 const { Menu } = require('electron')
 const menubar = require('menubar')
 const path = require('path')
+const { appUpdater, isWindowsOrmacOS } = require('./auto-updater')
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -38,6 +39,13 @@ mb.on('ready', function ready () {
   ]
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(template))
+
+  const checkOS = isWindowsOrmacOS()
+
+  if (checkOS && !isDev) {
+    // Initate auto-updates on macOs and windows
+    appUpdater()
+  }
 })
 
 if (isDev) {
