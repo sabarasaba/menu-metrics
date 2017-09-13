@@ -25,6 +25,7 @@ export default ({
           value: inputValue,
           disabled: !!isLoading
         }}
+        valid={!!apiKey}
         label="API Token"
         placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         meta={{

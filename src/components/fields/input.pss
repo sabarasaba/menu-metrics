@@ -28,8 +28,21 @@
     font-size: 13px;
     color: #f44336;
   }
+
+  .valid {
+    position: relative;
+    padding-left: 3px;
+    color: #00a854;
+
+    >svg {
+      position: absolute;
+      height: 20px;
+      top: -3px;
+    }
+  }
 }
 
 .inputLine + .inputLine {
   margin-top: .7rem;
 }
+
