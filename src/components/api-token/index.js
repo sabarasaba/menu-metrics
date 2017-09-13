@@ -7,11 +7,13 @@ import styles from './ApiToken.pss'
 const cx = classNames.bind(styles)
 
 export default ({
-  hasPremium,
+  inputValue,
+  apiKey,
   hasTrial,
   trialDaysLeft,
   failed,
   isLoading,
+  onInputChange,
   onInputBlur
 }) => {
   return (
@@ -24,13 +26,15 @@ export default ({
       }
       <Input
         input={{
-          onBlur: onInputBlur
+          onBlur: onInputBlur,
+          onChange: onInputChange,
+          value: inputValue
         }}
         label="API Token"
         placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         meta={{}}
       />
-      {!hasPremium && hasTrial &&
+      {!apiKey && hasTrial &&
         <p>Trial mode, {trialDaysLeft} days left.</p>
       }
     </div>

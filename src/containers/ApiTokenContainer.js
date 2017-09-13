@@ -3,13 +3,26 @@ import { connect } from 'react-redux'
  import { bindActionCreators } from 'redux'
 
 import { hasTrial, trialDaysLeft } from '../selectors/settings'
-import { validateToken } from '../reducks/settings'
+import { saveToken } from '../reducks/settings'
 import ApiToken from '../components/api-token'
 
 class ApiTokenContainer extends Component {
   state = {
     isLoading: false,
-    failed: false
+    failed: false,
+    inputValue: ''
+  }
+
+  componentDidMount() {
+    this.setState({
+      inputValue: this.props.apiKey
+    })
+  }
+
+  onInputChange = (e) => {
+    this.setState({
+      inputValue: e.target.value
+    })
   }
 
   onInputBlur = async (e) => {
@@ -17,7 +30,7 @@ class ApiTokenContainer extends Component {
     this.setState({ failed: false, isLoading: true })
 
     try {
-      await this.props.validateToken(token)
+      await this.props.saveToken(token)
       this.setState({ failed: false, isLoading: false })
     } catch (e) {
       this.setState({ failed: true, isLoading: false })
@@ -25,16 +38,18 @@ class ApiTokenContainer extends Component {
   }
 
   render() {
-    const { isLoading, failed } = this.state
-    const { hasPremium, hasTrial, trialDaysLeft } = this.props
+    const { inputValue, isLoading, failed } = this.state
+    const { apiKey, hasTrial, trialDaysLeft } = this.props
 
     return (
       <ApiToken
-        hasPremium={hasPremium}
+        inputValue={inputValue}
+        apiKey={apiKey}
         hasTrial={hasTrial}
         trialDaysLeft={trialDaysLeft}
         failed={failed}
         isLoading={isLoading}
+        onInputChange={this.onInputChange}
         onInputBlur={this.onInputBlur}
       />
     )
@@ -43,7 +58,7 @@ class ApiTokenContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    hasPremium: state.settings.data.apikey,
+    apiKey: state.settings.data.apiKey,
     hasTrial: hasTrial(state),
     trialDaysLeft: trialDaysLeft(state)
   }
@@ -51,7 +66,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    validateToken: bindActionCreators(validateToken, dispatch)
+    saveToken: bindActionCreators(saveToken, dispatch)
   }
 }
 

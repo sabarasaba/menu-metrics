@@ -74,15 +74,28 @@ export function checkUpdate() {
   }
 }
 
-export function validateToken(token) {
-  return dispatch => {
+export function saveToken(token) {
+  return (dispatch, getState) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const { data } = await axios.get(`${process.env.REACT_APP_UPDATE_URI}/validate`)
+        const { data } = await axios.get(`${process.env.REACT_APP_UPDATE_URI}/validate`, {
+          params: {
+            token
+          }
+        })
 
-        console.log(data);
+        if (data.ok) {
+          const settings = getState().settings.data
 
-        data.ok ? resolve() : reject()
+          await storage.set('settings', JSON.stringify({
+            ...settings,
+            apiKey: token
+          }))
+
+          resolve()
+        } else {
+          reject()
+        }
       } catch (e) {
         reject()
       }
