@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux'
 
+import { hasTrial, trialDaysLeft } from '../selectors/settings'
 import { checkUpdate } from '../reducks/settings'
 import { fetchReport } from '../reducks/report'
 import NavBar from '../components/navbar'
@@ -29,6 +30,8 @@ class NavBarContainer extends Component {
 
   render() {
     const {
+      hasTrial,
+      trialDaysLeft,
       updatesLabel,
       isLoading,
       hasSettings
@@ -36,6 +39,8 @@ class NavBarContainer extends Component {
 
     return (
       <NavBar
+        hasTrial={hasTrial}
+        trialDaysLeft={trialDaysLeft}
         updatesLabel={updatesLabel}
         hasSettings={hasSettings}
         isLoading={isLoading}
@@ -49,6 +54,8 @@ class NavBarContainer extends Component {
 
 function mapStateToProps(state) {
   return {
+    hasTrial: hasTrial(state),
+    trialDaysLeft: trialDaysLeft(state),
     isLoading: state.report.isLoading,
     hasSettings: state.settings.data.interval,
     updatesLabel: state.settings.checkingForUpdates

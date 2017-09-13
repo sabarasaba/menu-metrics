@@ -1,4 +1,5 @@
 import axios from 'axios'
+import moment from 'moment'
 import compare from 'semver-compare'
 import storage from '../helpers/storage'
 import { version } from '../../package.json'
@@ -70,5 +71,22 @@ export function checkUpdate() {
     setTimeout(() => {
       dispatch({ type: SET_CHECKING_UPDATES, toggle: 'Check updates' })
     }, 120000)
+  }
+}
+
+export function validateToken(token) {
+  return dispatch => {
+    console.log('validate token')
+  }
+}
+
+export function beginTrial() {
+  return (dispatch, getState) => {
+    const settings = getState().settings.data
+
+    storage.set('settings', JSON.stringify({
+      ...settings,
+      installed: moment().format()
+    }))
   }
 }

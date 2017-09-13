@@ -12,6 +12,8 @@ export default ({
   updatesLabel,
   hasSettings,
   isLoading,
+  hasTrial,
+  trialDaysLeft,
   onRefreshClick,
   onCheckUpdate,
   onCloseApp
@@ -28,6 +30,13 @@ export default ({
           {updatesLabel || 'Check updates'}
         </div>
       </Menu.Item>
+      {hasTrial &&
+        <Menu.Item key="2">
+          <div>
+            Trial, {trialDaysLeft} days left
+          </div>
+        </Menu.Item>
+      }
       <Menu.Divider />
       <Menu.Item key="3" onClick={onCloseApp}>
         <div onClick={onCloseApp}>

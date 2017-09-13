@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import './app.css'
 
+import { beginTrial } from './reducks/settings'
 import { fetchReport } from './reducks/report'
 import NavBarContainer from './containers/NavBarContainer'
 import HomePage from './pages/home-page'
@@ -15,6 +16,7 @@ class App extends Component {
     if (this.props.interval) {
       this.onTick()
     } else {
+      this.props.beginTrial()
       this.props.history.push('/settings')
     }
   }
@@ -52,7 +54,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchReport: bindActionCreators(fetchReport, dispatch)
+    fetchReport: bindActionCreators(fetchReport, dispatch),
+    beginTrial: bindActionCreators(beginTrial, dispatch)
   }
 }
 
