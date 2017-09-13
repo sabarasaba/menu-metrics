@@ -18,21 +18,19 @@ export default ({
 }) => {
   return (
     <div className={cx('root')}>
-      {failed &&
-        <div>failed..</div>
-      }
-      {isLoading &&
-        <div>is loading..</div>
-      }
       <Input
         input={{
           onBlur: onInputBlur,
           onChange: onInputChange,
-          value: inputValue
+          value: inputValue,
+          disabled: !!isLoading
         }}
         label="API Token"
         placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        meta={{}}
+        meta={{
+          touched: true,
+          error: failed ? 'Invalid key' : ''
+        }}
       />
       {!apiKey && hasTrial &&
         <p>Trial mode, {trialDaysLeft} days left.</p>
