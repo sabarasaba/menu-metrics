@@ -56,7 +56,7 @@ export function checkUpdate() {
     dispatch({ type: SET_CHECKING_UPDATES, toggle: 'Checking for update..' })
 
     try {
-      const { data } = await axios.get(process.env.REACT_APP_UPDATE_URI)
+      const { data } = await axios.get(`${process.env.REACT_APP_UPDATE_URI}/version`)
 
       if (compare(data.version, version) === -1) {
         dispatch({ type: SET_CHECKING_UPDATES, toggle: 'Check updates' })
@@ -76,7 +76,17 @@ export function checkUpdate() {
 
 export function validateToken(token) {
   return dispatch => {
-    console.log('validate token')
+    return new Promise(async (resolve, reject) => {
+      try {
+        const { data } = await axios.get(`${process.env.REACT_APP_UPDATE_URI}/validate`)
+
+        console.log(data);
+
+        data.ok ? resolve() : reject()
+      } catch (e) {
+        reject()
+      }
+    })
   }
 }
 
