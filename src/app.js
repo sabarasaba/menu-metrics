@@ -8,21 +8,20 @@ import { hasTrial } from './selectors/settings'
 import { beginTrial } from './reducks/settings'
 import { fetchReport } from './reducks/report'
 import NavBarContainer from './containers/NavBarContainer'
+
 import HomePage from './pages/home-page'
 import SettingsPage from './pages/settings-page'
+import FeedbackPage from './pages/feedback-page'
 import ExpiredPage from './pages/expired-page'
 import NotFoundPage from './pages/not-found'
 
 class App extends Component {
   componentDidMount() {
-    this.props.history.push('/expired')
-    return
-
     if (this.props.interval) {
-      this.onTick()
-
       if (!this.props.hasTrial && !this.props.hasApiKey) {
         this.props.history.push('/expired')
+      } else {
+        this.onTick()
       }
     } else {
       this.props.beginTrial()
@@ -32,8 +31,12 @@ class App extends Component {
 
   onTick = () => {
     setTimeout(() => {
-      this.props.fetchReport()
-      this.onTick()
+      if (!this.props.hasTrial && !this.props.hasApiKey) {
+        this.props.history.push('/expired')
+      } else {
+        this.props.fetchReport()
+        this.onTick()
+      }
     }, this.props.interval * 60000)
   }
 
@@ -46,6 +49,7 @@ class App extends Component {
             <Route path="/" exact component={HomePage} />
             <Route path="/settings" exact component={SettingsPage} />
             <Route path="/expired" exact component={ExpiredPage} />
+            <Route path="/feedback" exact component={FeedbackPage} />
 
             { /* Catch all unmatched routes */ }
             <Route component={NotFoundPage} />

@@ -13,6 +13,22 @@ export default ({
   type,
   meta: { touched, error }
 }) => {
+  if (type === 'textarea') {
+    return (
+      <div className={cx('inputLine')}>
+        <label>{label} {valid && <span className={cx('valid')}><CheckCircle /></span>}</label>
+        <div>
+          <textarea {...input} type={type} placeholder={label} rows="10"></textarea>
+          {touched && error &&
+            <span>
+              {error}
+            </span>
+          }
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className={cx('inputLine')}>
       <label>{label} {valid && <span className={cx('valid')}><CheckCircle /></span>}</label>

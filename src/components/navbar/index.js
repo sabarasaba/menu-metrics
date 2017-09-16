@@ -25,6 +25,11 @@ export default ({
           Settings
         </NavLink>
       </Menu.Item>
+      <Menu.Item key="4">
+        <NavLink to="/feedback">
+          Feedback
+        </NavLink>
+      </Menu.Item>
       <Menu.Item key="1">
         <div onClick={onCheckUpdate}>
           {updatesLabel || 'Check updates'}

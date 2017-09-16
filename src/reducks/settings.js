@@ -113,3 +113,11 @@ export function beginTrial() {
     }))
   }
 }
+
+export function sendFeedback(values) {
+  return async dispatch => {
+    try {
+      await axios.post(`${process.env.REACT_APP_UPDATE_URI}/feedback`, values)
+    } catch (e) {  }
+  }
+}
