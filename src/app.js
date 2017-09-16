@@ -15,6 +15,9 @@ import NotFoundPage from './pages/not-found'
 
 class App extends Component {
   componentDidMount() {
+    this.props.history.push('/expired')
+    return
+
     if (this.props.interval) {
       this.onTick()
 

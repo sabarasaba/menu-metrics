@@ -3,12 +3,21 @@ import classNames from 'classnames/bind'
 
 import styles from './ExpiredPage.pss'
 
+const electron = window.require('electron')
 const cx = classNames.bind(styles)
 
 export default () => {
+  const onBuyClick = (e) => {
+    electron.remote.shell.openExternal('https://json-menu.com')
+  }
+
   return (
     <div className={cx('root')}>
-      Your licence expired, please buy one!
+      <p>Your licence expired, please buy one!</p>
+
+      <button type="submit" onClick={onBuyClick}>
+        Buy for $10
+      </button>
     </div>
   )
 }
