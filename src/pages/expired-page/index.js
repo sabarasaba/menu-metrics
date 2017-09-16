@@ -8,7 +8,7 @@ const cx = classNames.bind(styles)
 
 export default () => {
   const onBuyClick = (e) => {
-    electron.remote.shell.openExternal('https://json-menu.com')
+    electron.remote.shell.openExternal(process.env.REACT_APP_WEB_URI)
   }
 
   return (

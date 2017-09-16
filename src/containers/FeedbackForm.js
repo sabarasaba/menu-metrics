@@ -1,5 +1,4 @@
 import validator from 'validator'
-import _ from 'lodash'
 import { withRouter } from 'react-router'
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'

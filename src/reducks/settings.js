@@ -7,6 +7,10 @@ import { version } from '../../package.json'
 export const SET_SETTINGS = 'settings/SET_SETTINGS'
 export const SET_CHECKING_UPDATES = 'settings/SET_CHECKING_UPDATES'
 
+const SERVER_URL = process.env.NODE_ENV === 'development'
+  ? process.env.REACT_APP_WEB_URI_DEV
+  : process.env.REACT_APP_WEB_URI
+
 const electron = window.require('electron')
 
 const initialState = {
@@ -56,11 +60,11 @@ export function checkUpdate() {
     dispatch({ type: SET_CHECKING_UPDATES, toggle: 'Checking for update..' })
 
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_UPDATE_URI}/version`)
+      const { data } = await axios.get(`${SERVER_URL}/version`)
 
       if (compare(data.version, version) === -1) {
         dispatch({ type: SET_CHECKING_UPDATES, toggle: 'Check updates' })
-        electron.remote.shell.openExternal('https://json-menu.com/download')
+        electron.remote.shell.openExternal(`${SERVER_URL}`)
       } else {
         dispatch({ type: SET_CHECKING_UPDATES, toggle: 'No new updates' })
       }
@@ -78,7 +82,7 @@ export function saveToken(token) {
   return (dispatch, getState) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const { data } = await axios.get(`${process.env.REACT_APP_UPDATE_URI}/validate`, {
+        const { data } = await axios.get(`${SERVER_URL}/validate`, {
           params: {
             token
           }
@@ -117,7 +121,7 @@ export function beginTrial() {
 export function sendFeedback(values) {
   return async dispatch => {
     try {
-      await axios.post(`${process.env.REACT_APP_UPDATE_URI}/feedback`, values)
+      await axios.post(`${SERVER_URL}/feedback`, values)
     } catch (e) {  }
   }
 }
