@@ -1,13 +1,12 @@
 import axios from 'axios'
 import _ from 'lodash'
-import config from './tests/config1'
 
 export const SET_REPORT = 'report/SET_REPORT'
 export const SET_ERROR = 'report/SET_ERROR'
 export const TOGGLE_LOADING = 'report/TOGGLE_LOADING'
 
 const initialState = {
-  config,
+  config: [],
   isLoading: false,
   error: null
 }
@@ -46,7 +45,7 @@ export function fetchReport() {
     try {
       const { data } = await axios.get(state.settings.data.url)
 
-      if (_.isObject(config)) {
+      if (_.isObject(data)) {
         dispatch({ type: SET_REPORT, config: data })
       } else {
         dispatch({ type: SET_ERROR, error: 'Endpoint response must be json' })

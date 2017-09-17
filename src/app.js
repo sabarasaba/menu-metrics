@@ -21,6 +21,7 @@ class App extends Component {
       if (!this.props.hasTrial && !this.props.hasApiKey) {
         this.props.history.push('/expired')
       } else {
+        this.props.fetchReport()
         this.onTick()
       }
     } else {
