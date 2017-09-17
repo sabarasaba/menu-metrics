@@ -42,4 +42,6 @@
   }
 }
 
-
+.linkTo {
+  cursor: pointer !important;
+}

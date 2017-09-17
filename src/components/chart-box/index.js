@@ -5,6 +5,7 @@ import classNames from 'classnames/bind'
 import LineChart from '../charts/Line'
 import styles from './ChartBox.pss'
 
+const electron = window.require('electron')
 const cx = classNames.bind(styles)
 
 const getChartComponent = ({ chartType, chartConfig }) => {
@@ -15,14 +16,21 @@ const getChartComponent = ({ chartType, chartConfig }) => {
   )
 }
 
+const onClickBox = (link) => {
+  if (link) {
+    electron.remote.shell.openExternal(link)
+  }
+}
+
 const ChartBox =  ({
   title,
   subtitle,
+  linkTo,
   chartType,
   chartConfig
 }) => {
   return (
-    <div className={cx('root')}>
+    <div className={cx('root', { linkTo })} onClick={onClickBox.bind(this, linkTo)}>
       <div className={cx('content')}>
         <div className={cx('body')}>
           <h4>{title}</h4>
@@ -41,6 +49,7 @@ ChartBox.defaultProps = {
 ChartBox.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
+  linkTo: PropTypes.string,
   chartType: PropTypes.string,
   chartConfig: PropTypes.object
 }
