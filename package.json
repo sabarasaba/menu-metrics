@@ -12,6 +12,7 @@
     "electron-json-storage": "^3.1.0",
     "electron-packager": "^9.0.1",
     "electron-squirrel-startup": "^1.0.0",
+    "eslint": "^4.7.0",
     "foreman": "^2.0.0",
     "lodash": "^4.17.4",
     "menubar": "^5.2.3",

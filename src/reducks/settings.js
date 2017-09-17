@@ -62,7 +62,9 @@ export function checkUpdate() {
     try {
       const { data } = await axios.get(`${SERVER_URL}/version`)
 
-      if (compare(data.version, version) === -1) {
+      // a > b => 1
+      if (compare(data.version, version) === 1) {
+        debugger
         dispatch({ type: SET_CHECKING_UPDATES, toggle: 'Check updates' })
         electron.remote.shell.openExternal(`${SERVER_URL}`)
       } else {

@@ -1,5 +1,4 @@
 import validator from 'validator'
-import _ from 'lodash'
 import { withRouter } from 'react-router'
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
@@ -26,11 +25,7 @@ export const validate = (values, props) => {
 
 export const onSubmit = (values, dispatch, props) => {
   props.setSettings(values)
-
-  // First time user opens the app, after settings send them to their dashboard
-  if (_.isEmpty(_.omit(props.initialValues, ['apiKey']))) {
-    props.history.push('/')
-  }
+  props.history.push('/')
 }
 
 const SettingsForm = reduxForm({
