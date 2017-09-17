@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { setSettings } from '../reducks/settings'
+import { fetchReport } from './reducks/report'
 import Settings from '../components/settings'
 
 export const validate = (values, props) => {
@@ -23,8 +24,10 @@ export const validate = (values, props) => {
   return errors
 }
 
-export const onSubmit = (values, dispatch, props) => {
-  props.setSettings(values)
+export const onSubmit = async (values, dispatch, props) => {
+  await props.setSettings(values)
+
+  props.fetchReport()
   props.history.push('/')
 }
 
@@ -42,6 +45,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    fetchReport: bindActionCreators(fetchReport, dispatch),
     setSettings: bindActionCreators(setSettings, dispatch)
   }
 }
