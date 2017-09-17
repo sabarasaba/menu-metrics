@@ -128,3 +128,7 @@
   }
 }
 
+
+.linkTo {
+  cursor: pointer !important;
+}

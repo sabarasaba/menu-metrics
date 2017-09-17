@@ -6,6 +6,7 @@ import SparklineChart from '../charts/Sparkline'
 import PieChart from '../charts/Pie'
 import styles from './LongBox.pss'
 
+const electron = window.require('electron')
 const cx = classNames.bind(styles)
 
 const getIconComponent = ({icon, iconTheme, chartType, chartConfig, reverse}) => {
@@ -27,10 +28,17 @@ const getIconComponent = ({icon, iconTheme, chartType, chartConfig, reverse}) =>
   )
 }
 
+const onClickBox = (link) => {
+  if (link) {
+    electron.remote.shell.openExternal(link)
+  }
+}
+
 const LongBox =  ({
   title,
   smallTitle,
   subtitle,
+  linkTo,
   icon,
   iconTheme,
   theme,
@@ -41,7 +49,7 @@ const LongBox =  ({
   const direction = chartType === 'sparkline' ? true : reverse
 
   return (
-    <div className={cx('root', theme)}>
+    <div className={cx('root', theme, { linkTo })} onClick={onClickBox.bind(this, linkTo)}>
       <div className={cx('content', { reverse: direction })}>
         {getIconComponent({ icon, iconTheme, chartType, chartConfig, reverse})}
         <div className={cx('body')}>
@@ -61,6 +69,7 @@ LongBox.propTypes = {
   title: PropTypes.string,
   smallTitle: PropTypes.string,
   subtitle: PropTypes.string,
+  linkTo: PropTypes.string,
   icon: PropTypes.string,
   iconTheme: PropTypes.string,
   theme: PropTypes.string,
