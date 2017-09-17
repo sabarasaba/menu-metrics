@@ -1,3 +1,7 @@
 .root {
   margin-bottom: .7rem;
+
+  p {
+    font-size: 13px;
+  }
 }
