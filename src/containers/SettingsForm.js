@@ -11,7 +11,9 @@ import Settings from '../components/settings'
 export const validate = (values, props) => {
   const errors = {}
 
-  if (!validator.isURL(values.url || '')) {
+  if (!validator.isURL(values.url || '', {
+    require_tld: false
+  })) {
     errors.url = 'Not a valid url'
   }
 
@@ -26,7 +28,7 @@ export const onSubmit = (values, dispatch, props) => {
   props.setSettings(values)
 
   // First time user opens the app, after settings send them to their dashboard
-  if (_.isEmpty(props.initialValues)) {
+  if (_.isEmpty(_.omit(props.initialValues, ['apiKey']))) {
     props.history.push('/')
   }
 }

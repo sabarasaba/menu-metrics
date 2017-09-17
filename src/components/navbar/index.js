@@ -14,6 +14,7 @@ export default ({
   isLoading,
   hasTrial,
   trialDaysLeft,
+  onBuyLicense,
   onRefreshClick,
   onCheckUpdate,
   onCloseApp
@@ -37,7 +38,7 @@ export default ({
       </Menu.Item>
       {hasTrial &&
         <Menu.Item key="2">
-          <div>
+          <div onClick={onBuyLicense}>
             Trial, {trialDaysLeft} days left
           </div>
         </Menu.Item>

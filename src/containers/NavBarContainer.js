@@ -21,6 +21,12 @@ class NavBarContainer extends Component {
     this.props.checkUpdate()
   }
 
+  onBuyLicense = (e) => {
+    e.preventDefault()
+
+    electron.remote.shell.openExternal(process.env.REACT_APP_WEB_URI)
+  }
+
   onRefreshClick = (e) => {
     if (this.props.location.pathname === '/' && !this.props.isLoading) {
       e.preventDefault()
@@ -44,6 +50,7 @@ class NavBarContainer extends Component {
         updatesLabel={updatesLabel}
         hasSettings={hasSettings}
         isLoading={isLoading}
+        onBuyLicense={this.onBuyLicense}
         onRefreshClick={this.onRefreshClick}
         onCheckUpdate={this.onCheckUpdate}
         onCloseApp={this.onCloseApp}
