@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { setSettings } from '../reducks/settings'
-import { fetchReport } from './reducks/report'
+import { fetchReport } from '../reducks/report'
 import Settings from '../components/settings'
 
 export const validate = (values, props) => {
