@@ -5,6 +5,7 @@ import storage from '../helpers/storage'
 import { version } from '../../package.json'
 
 export const SET_SETTINGS = 'settings/SET_SETTINGS'
+export const SET_TOKEN = 'settings/SET_TOKEN'
 export const SET_CHECKING_UPDATES = 'settings/SET_CHECKING_UPDATES'
 
 const SERVER_URL = process.env.NODE_ENV === 'development'
@@ -30,6 +31,15 @@ export default function (state = initialState, action) {
         data: {
           ...state.data,
           ...action.values
+        }
+      }
+
+    case SET_TOKEN:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          apiKey: action.key
         }
       }
 
@@ -97,6 +107,8 @@ export function saveToken(token) {
             ...settings,
             apiKey: token
           }))
+
+          dispatch({ type: SET_TOKEN, key: token })
 
           resolve()
         } else {
