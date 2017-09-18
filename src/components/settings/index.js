@@ -3,6 +3,7 @@ import classNames from 'classnames/bind'
 import { Field } from 'redux-form'
 import renderField from '../fields/input'
 
+import AutoLaunchContainer from '../../containers/AutoLaunchContainer'
 import styles from './Settings.pss'
 
 const cx = classNames.bind(styles)
@@ -25,6 +26,8 @@ export default props => {
         placeholder="5"
         component={renderField}
       />
+
+      <AutoLaunchContainer />
 
       <div className={cx('footer')}>
         <button type="submit" disabled={pristine || submitting}>

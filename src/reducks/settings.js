@@ -13,6 +13,12 @@ const SERVER_URL = process.env.NODE_ENV === 'development'
   : process.env.REACT_APP_WEB_URI
 
 const electron = window.require('electron')
+const AutoLaunch = window.require('auto-launch')
+
+const launcher = new AutoLaunch({
+  name: 'json-menu',
+  path: electron.remote.app.getAppPath() + '/' + electron.remote.app.getName() + '.app'
+})
 
 const initialState = {
   data: {
@@ -129,6 +135,22 @@ export function beginTrial() {
       ...settings,
       installed: moment().format()
     }))
+  }
+}
+
+export function isAutolaunchEnabled() {
+  return launcher.isEnabled()
+}
+
+export function setAutolaunch(toggle) {
+  return async dispatch => {
+    const isEnabled = await isAutolaunchEnabled()
+
+    if (isEnabled && !toggle) {
+      launcher.disable()
+    } else {
+      launcher.enable()
+    }
   }
 }
 

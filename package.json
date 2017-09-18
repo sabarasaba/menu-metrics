@@ -6,6 +6,7 @@
   "homepage": "./",
   "dependencies": {
     "antd": "^2.13.1",
+    "auto-launch": "^5.0.1",
     "axios": "^0.16.2",
     "classnames": "^2.2.5",
     "electron": "^1.7.5",
@@ -26,7 +27,7 @@
     "redux-form": "^7.0.3",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
-    "sabarasaba-react-scripts": "^10.0.13",
+    "sabarasaba-react-scripts": "^10.0.14",
     "semver-compare": "^1.0.0",
     "shortid": "^2.2.8",
     "validator": "^8.1.0"

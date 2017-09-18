@@ -24,7 +24,7 @@ export const validate = (values, props) => {
 export const onSubmit = (values, dispatch, props) => {
   props.sendFeedback(values)
 
-  props.history.push('/settings')
+  props.history.push(props.hasSettings ? '/' : '/settings')
 }
 
 const FeedbackForm = reduxForm({
@@ -33,8 +33,10 @@ const FeedbackForm = reduxForm({
   onSubmit
 })(Feedback)
 
-function mapStateToProps() {
-  return {}
+function mapStateToProps(state) {
+  return {
+    hasSettings: state.settings.data.interval
+  }
 }
 
 function mapDispatchToProps(dispatch) {
