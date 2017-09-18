@@ -43,7 +43,7 @@ export function fetchReport() {
     dispatch({ type: TOGGLE_LOADING, toggle: true })
 
     try {
-      const { data } = await axios.get(state.settings.data.url)
+      const { data } = await axios.get(`${state.settings.data.url}?time=${Date.now()}`)
 
       if (_.isObject(data)) {
         dispatch({ type: SET_REPORT, config: data })
