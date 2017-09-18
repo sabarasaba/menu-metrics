@@ -16,6 +16,7 @@ export default function(state = initialState, action) {
     case SET_REPORT:
       return {
         ...state,
+        error: null,
         config: action.config
       }
 
