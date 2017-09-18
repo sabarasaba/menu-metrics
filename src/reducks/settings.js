@@ -16,8 +16,11 @@ const electron = window.require('electron')
 const AutoLaunch = window.require('auto-launch')
 
 const launcher = new AutoLaunch({
-  name: 'json-menu',
-  path: electron.remote.app.getAppPath() + '/' + electron.remote.app.getName() + '.app'
+  name: electron.remote.app.getName(),
+  path: electron.remote.app.getPath('exe').split('.app/Content')[0] + '.app',
+  mac: {
+    useLaunchAgent: true,
+  }
 })
 
 const initialState = {
@@ -143,14 +146,10 @@ export function isAutolaunchEnabled() {
 }
 
 export function setAutolaunch(toggle) {
-  return async dispatch => {
-    const isEnabled = await isAutolaunchEnabled()
-
-    if (isEnabled && !toggle) {
-      launcher.disable()
-    } else {
-      launcher.enable()
-    }
+  if (!toggle) {
+    launcher.disable()
+  } else {
+    launcher.enable()
   }
 }
 
